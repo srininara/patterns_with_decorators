@@ -16,7 +16,7 @@ def only_natural_with_operator(func):
     return wrapper
 
 
-def cor(*, next):
+def cor(next):
     def wrapper(current):
         def inner(*args):
             output = current(*args)
@@ -25,7 +25,7 @@ def cor(*, next):
     return wrapper
 
 
-def calc_cor(*, my_operator, next=None):
+def calc_cor(my_operator, next=None):
     def wrapper(current):
         def inner(*args):
             if args[0] == my_operator:
