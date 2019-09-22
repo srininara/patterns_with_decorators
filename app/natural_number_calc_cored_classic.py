@@ -1,11 +1,7 @@
 from app.decorator_utils import only_natural_with_operator, calc_cor
 
 def do(operator, arg1, arg2):
-    value = _add(operator, arg1, arg2)
-    if value:
-        return value
-    else:
-        raise ValueError('Calc Error - Operator not supported')
+    return _add(operator, arg1, arg2)
 
 @only_natural_with_operator
 @calc_cor(my_operator='^')

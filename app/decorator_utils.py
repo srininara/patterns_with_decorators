@@ -24,6 +24,7 @@ def cor(*, next):
         return inner
     return wrapper
 
+
 def calc_cor(*, my_operator, next=None):
     def wrapper(current):
         def inner(*args):
@@ -32,6 +33,6 @@ def calc_cor(*, my_operator, next=None):
             elif next:
                 return next(*args)
             else:
-                return None
+                raise ValueError('Calc Error - Operator not supported')
         return inner
     return wrapper
