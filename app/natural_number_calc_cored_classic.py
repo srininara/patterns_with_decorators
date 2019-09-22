@@ -1,4 +1,4 @@
-from app.decorator_utils import only_natural_with_operator, cor
+from app.decorator_utils import only_natural_with_operator, calc_cor
 
 def do(operator, arg1, arg2):
     value = _add(operator, arg1, arg2)
@@ -8,40 +8,26 @@ def do(operator, arg1, arg2):
         raise ValueError('Calc Error - Operator not supported')
 
 @only_natural_with_operator
+@calc_cor(my_operator='^')
 def _power(operator, arg1, arg2):
-    if operator == '^':
-        return arg1 ** arg2
-    else:
-        return None
+    return arg1 ** arg2
 
 @only_natural_with_operator
-@cor(next=_power)
+@calc_cor(my_operator='/', next=_power)
 def _divide(operator, arg1, arg2):
-    if operator == '/':
-        return arg1 / arg2
-    else:
-        return None
+    return arg1 / arg2
 
 @only_natural_with_operator
-@cor(next=_divide)
+@calc_cor(my_operator='*', next=_divide)
 def _multiply(operator, arg1, arg2):
-    if operator == '*':
-        return arg1 * arg2
-    else:
-        return None
+    return arg1 * arg2
 
 @only_natural_with_operator
-@cor(next=_multiply)
+@calc_cor(my_operator='-', next=_multiply)
 def _subtract(operator, arg1, arg2):
-    if operator == '-':
-        return arg1 - arg2
-    else:
-        return None
+    return arg1 - arg2
 
 @only_natural_with_operator
-@cor(next=_subtract)
+@calc_cor(my_operator='+', next=_subtract)
 def _add(operator, arg1, arg2):
-    if operator == '+':
-        return arg1 + arg2
-    else:
-        return None
+    return arg1 + arg2

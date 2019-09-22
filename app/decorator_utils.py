@@ -23,3 +23,15 @@ def cor(*, next):
             return output if output else next(*args) if next else None
         return inner
     return wrapper
+
+def calc_cor(*, my_operator, next=None):
+    def wrapper(current):
+        def inner(*args):
+            if args[0] == my_operator:
+                return current(*args)
+            elif next:
+                return next(*args)
+            else:
+                return None
+        return inner
+    return wrapper
