@@ -1,0 +1,1 @@
+Python Decorators inspired by GOF Patterns - Code
