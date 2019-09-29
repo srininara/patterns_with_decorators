@@ -1,15 +1,15 @@
-CHAINED = []
+CHAIN = []
 
-def chain_link(predicate):
-    def wrapper(action):
-        CHAINED.append((predicate,action))
-        return action
+def link_to_chain(predicate):
+    def wrapper(operator):
+        CHAIN.append((predicate,operator))
+        return operator
     return wrapper
 
 
 def pull_chain(*args):
-    for predicate,action in CHAINED:
+    for predicate,operator in CHAIN:
         if predicate(*args):
-            return action(*args)
+            return operator(*args)
 
     raise ValueError('Calc Error - Operator not supported')

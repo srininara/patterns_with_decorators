@@ -6,7 +6,7 @@ def do(operator, arg1, arg2):
     elif operator == '*':
         return _multiply(arg1, arg2)
     elif operator == '/':
-        return divide(arg1, arg2)
+        return _divide(arg1, arg2)
     elif operator == '^':
         return _power(arg1, arg2)
     else:
@@ -17,7 +17,7 @@ def _power(arg1, arg2):
         raise ValueError('Calc Error - Natural numbers only supported')
     return arg1 ** arg2
 
-def divide(arg1, arg2):
+def _divide(arg1, arg2):
     if arg1 < 1 or arg2 < 1:
         raise ValueError('Calc Error - Natural numbers only supported')
     return arg1 / arg2
